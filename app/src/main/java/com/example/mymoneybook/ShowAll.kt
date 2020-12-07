@@ -123,6 +123,7 @@ class ShowAll : Fragment() {
                                 data_list.clear()
                                 activity!!.runOnUiThread {
                                     adapter.notifyDataSetChanged()
+                                    //초기화
                                     income=0
                                     outcome=0
                                     result=0
