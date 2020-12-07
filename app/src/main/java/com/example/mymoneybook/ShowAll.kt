@@ -123,9 +123,12 @@ class ShowAll : Fragment() {
                                 data_list.clear()
                                 activity!!.runOnUiThread {
                                     adapter.notifyDataSetChanged()
-                                    textIncome.text = "0"
-                                    textOutcome.text = "0"
-                                    textResult.text = "0"
+                                    income=0
+                                    outcome=0
+                                    result=0
+                                    textIncome.text = decimal.format(income).toString()
+                                    textOutcome.text = decimal.format(outcome).toString()
+                                    textResult.text = decimal.format(result).toString()
                                 }
                             }
                             Thread(r).start()
