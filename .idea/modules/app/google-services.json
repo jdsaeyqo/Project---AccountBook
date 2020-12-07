@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "486044320292",
+    "firebase_url": "https://mymoneybook-836c3.firebaseio.com",
+    "project_id": "mymoneybook-836c3",
+    "storage_bucket": "mymoneybook-836c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486044320292:android:01b9fa7ce4559241b24eb1",
+        "android_client_info": {
+          "package_name": "com.example.mymoneybook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486044320292-n6en6em1ocua6btji5t38fk2ofv3231d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mymoneybook",
+            "certificate_hash": "76ab206a43c23375b7ee6eba494164084c35f21d"
+          }
+        },
+        {
+          "client_id": "486044320292-apjb57plm5v18gji4voeugnr9k3cghhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEkbMJongZbLNv0UQbyXf50Y2rOn8C4Sw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486044320292-apjb57plm5v18gji4voeugnr9k3cghhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
