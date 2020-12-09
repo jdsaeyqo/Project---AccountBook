@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.memo_item.view.*
 
 class MemoAdapter(val db : MemoDatabase,val memo_data :MutableList<Memo>,val context: Context
 ,val itemClick : (Memo) -> Unit) :
@@ -26,17 +27,16 @@ class MemoAdapter(val db : MemoDatabase,val memo_data :MutableList<Memo>,val con
 
     override fun onBindViewHolder(holder: MemoViewHolder, position: Int) {
 
-        holder.txtMemoTitle.text = memo_data[position].title
-        holder.txtMemoBody.text = memo_data[position].body
+        val viewHolder = holder.itemView
+
+        viewHolder.memo_title.text = memo_data[position].title
+        viewHolder.memo_body.text = memo_data[position].body
 
         holder.bind(memo_data[position],context)
 
     }
 
     inner class MemoViewHolder(itemView : View,itemClick: (Memo) -> Unit) : RecyclerView.ViewHolder(itemView) {
-
-        val txtMemoTitle = itemView.findViewById<TextView>(R.id.memo_title)
-        val txtMemoBody = itemView.findViewById<TextView>(R.id.memo_body)
 
         fun bind(item : Memo,context: Context){
             itemView.setOnClickListener { itemClick(item) }

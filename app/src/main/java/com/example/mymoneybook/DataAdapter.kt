@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.data_item.view.*
 import java.text.DecimalFormat
 
 
@@ -31,21 +32,22 @@ class DataAdapter(val db : MoneyDatabase,val data : MutableList<Data>,val contex
     override fun onBindViewHolder(holder: mViewHolder, position: Int) {
 
         val decimal = DecimalFormat("###,###")
+        val viewholder = holder.itemView
 
 
-        holder.txtDate.text = data[position].date
-        holder.txtSep.text = data[position].sep
-        holder.txtChecked.text = data[position].checked
+        viewholder.txt_date.text = data[position].date
+        viewholder.txt_sep.text = data[position].sep
+        viewholder.txt_checked.text = data[position].checked
         if(data[position].money != ""){
-        holder.txtMoney.text = decimal.format(Integer.parseInt(data[position].money!!)).toString()
+            viewholder.txt_money.text = decimal.format(Integer.parseInt(data[position].money!!)).toString()
         }
-        if (holder.txtChecked.text == "수입") {
-            holder.txtMoney.setTextColor(Color.BLUE)
+        if (viewholder.txt_checked.text == "수입") {
+            viewholder.txt_money.setTextColor(Color.BLUE)
         } else {
-            holder.txtMoney.setTextColor(Color.RED)
+            viewholder.txt_money.setTextColor(Color.RED)
         }
 
-        holder.txtPurp.text = data[position].purp
+        viewholder.txt_purp.text = data[position].purp
 
         holder.bind(data[position], context)
 
@@ -55,11 +57,6 @@ class DataAdapter(val db : MoneyDatabase,val data : MutableList<Data>,val contex
 
     inner class mViewHolder(itemView: View, itemClick: (Data) -> Unit) :
         RecyclerView.ViewHolder(itemView){
-        val txtDate: TextView = itemView.findViewById<TextView>(R.id.txt_date)
-        val txtSep = itemView.findViewById<TextView>(R.id.txt_sep)
-        val txtMoney = itemView.findViewById<TextView>(R.id.txt_money)
-        val txtPurp = itemView.findViewById<TextView>(R.id.txt_purp)
-        val txtChecked = itemView.findViewById<TextView>(R.id.txt_checked)
 
 
         fun bind(item: Data, context: Context) {
