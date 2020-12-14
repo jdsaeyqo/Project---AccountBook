@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyMoneyBook</string>
+    <string name="app_name">CashBook</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="memo_delete">삭제</string>

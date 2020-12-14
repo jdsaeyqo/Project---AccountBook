@@ -1,15 +1,15 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.memo
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymoneybook.R
 import kotlinx.android.synthetic.main.memo_item.view.*
 
-class MemoAdapter(val db : MemoDatabase,val memo_data :MutableList<Memo>,val context: Context
-,val itemClick : (Memo) -> Unit) :
+class MemoAdapter(val db : MemoDatabase, val memo_data :MutableList<Memo>, val context: Context
+                  , val itemClick : (Memo) -> Unit) :
     RecyclerView.Adapter<MemoAdapter.MemoViewHolder>() {
 
 
@@ -38,7 +38,7 @@ class MemoAdapter(val db : MemoDatabase,val memo_data :MutableList<Memo>,val con
 
     inner class MemoViewHolder(itemView : View,itemClick: (Memo) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item : Memo,context: Context){
+        fun bind(item : Memo, context: Context){
             itemView.setOnClickListener { itemClick(item) }
         }
 

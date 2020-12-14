@@ -1,18 +1,18 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.data
 
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymoneybook.R
 import kotlinx.android.synthetic.main.data_item.view.*
 import java.text.DecimalFormat
 
 
-class DataAdapter(val db : MoneyDatabase,val data : MutableList<Data>,val context: Context
-,val itemClick: (Data)-> Unit)
+class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val context: Context
+                  , val itemClick: (Data)-> Unit)
     : RecyclerView.Adapter<DataAdapter.mViewHolder>(){
 
 

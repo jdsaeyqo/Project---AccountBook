@@ -1,10 +1,11 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.data
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CalendarView
+import com.example.mymoneybook.R
 import kotlinx.android.synthetic.main.activity_add_data.*
 
 class AddData : AppCompatActivity() {

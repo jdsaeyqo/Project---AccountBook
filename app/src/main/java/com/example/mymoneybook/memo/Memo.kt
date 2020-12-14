@@ -1,4 +1,4 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.memo
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

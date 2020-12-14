@@ -1,9 +1,11 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.mymoneybook.R
+import com.example.mymoneybook.memo.MemoFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 

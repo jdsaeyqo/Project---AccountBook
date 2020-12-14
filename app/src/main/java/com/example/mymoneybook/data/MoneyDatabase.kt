@@ -1,4 +1,4 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.data
 
 import android.content.Context
 import androidx.room.Database
@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 
 @Database(entities = arrayOf(Data::class),version = 1,exportSchema = false)
 abstract class MoneyDatabase:RoomDatabase() {
-    abstract fun dataDao():DataDao
+    abstract fun dataDao(): DataDao
 
     companion object{
         private var INSTANCE : MoneyDatabase? = null
-        fun getInstance(context : Context):MoneyDatabase{
+        fun getInstance(context : Context): MoneyDatabase {
             if(INSTANCE == null){
                 INSTANCE = Room.databaseBuilder(
                     context,

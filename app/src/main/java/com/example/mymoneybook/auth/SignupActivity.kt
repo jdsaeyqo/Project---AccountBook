@@ -1,9 +1,10 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.mymoneybook.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_signup.*
 
@@ -30,7 +31,8 @@ class SignupActivity : AppCompatActivity() {
                 if(it.isSuccessful){
                     val user = firebaseauth?.currentUser
                     Toast.makeText(this,"회원가입 성공", Toast.LENGTH_SHORT).show()
-                    var intent  = Intent(this,LoginActivity::class.java)
+                    var intent  = Intent(this,
+                        LoginActivity::class.java)
                     startActivity(intent)
                     finishAffinity()
                 }else{

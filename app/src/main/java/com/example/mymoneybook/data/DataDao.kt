@@ -1,4 +1,4 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.data
 
 import androidx.room.*
 
@@ -11,7 +11,7 @@ interface DataDao {
     fun insert(data : Data)
 
     @Update
-    fun update(data:Data)
+    fun update(data: Data)
 
     @Delete
     fun delete(data: Data)

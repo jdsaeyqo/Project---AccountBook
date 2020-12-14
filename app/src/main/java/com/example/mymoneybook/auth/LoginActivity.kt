@@ -1,10 +1,15 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.auth
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.mymoneybook.main.MainActivity
+import com.example.mymoneybook.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -13,13 +18,17 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.nhn.android.naverlogin.OAuthLogin
+import com.nhn.android.naverlogin.OAuthLoginHandler
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
+    lateinit var mOAuthLoginInstance : OAuthLogin
+
+
     //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
-
 
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -31,8 +40,43 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //네이버 아이디로 로그인
+        val naver_client_id = "O1mW7xHOd2X95n7IbJ_C"
+        val naver_client_secret = "8x5P5P_mHB"
+        val naver_client_name = "네아로 테스트"
+
+
+        val handler : OAuthLoginHandler = @SuppressLint("HandlerLeak")
+        object :OAuthLoginHandler(){
+            override fun run(success: Boolean) {
+                if(success){
+                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                    startActivity(intent)
+                }else{
+                    val errorCode: String = mOAuthLoginInstance.getLastErrorCode(this@LoginActivity).code
+                    val errorDesc = mOAuthLoginInstance.getLastErrorDesc(this@LoginActivity)
+
+                    Toast.makeText(
+                        baseContext, "errorCode:" + errorCode
+                                + ", errorDesc:" + errorDesc, Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+        }
+
+        mOAuthLoginInstance  = OAuthLogin.getInstance()
+        mOAuthLoginInstance.init(this,naver_client_id,naver_client_secret,naver_client_name)
+        button_naverlogin.setOAuthLoginHandler(handler)
+
+
+
+
+
+
         //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
         button_googlesignin.setOnClickListener { signIn() }
+
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.
         DEFAULT_SIGN_IN)
@@ -56,7 +100,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
 //    // onStart. 유저가 앱에 이미 구글 로그인을 했는지 확인
 //    public override fun onStart() {
 //        super.onStart()
@@ -145,7 +188,6 @@ class LoginActivity : AppCompatActivity() {
 
             }
         }
-
 
         private fun revokeAccess() {
             FirebaseAuth.getInstance().signOut()

@@ -1,6 +1,7 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.memo
 
 import androidx.room.*
+import com.example.mymoneybook.memo.Memo
 
 @Dao
 interface MemoDao {

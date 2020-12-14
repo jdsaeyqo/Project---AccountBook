@@ -1,9 +1,10 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.memo
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mymoneybook.R
 import kotlinx.android.synthetic.main.activity_add_memo.*
 
 class AddMemo : AppCompatActivity() {
@@ -16,7 +17,7 @@ class AddMemo : AppCompatActivity() {
             val MemoTitle = memo_title.text.toString()
             val MemoBody = memo_body.text.toString()
 
-            val memo = Memo(0,MemoTitle,MemoBody)
+            val memo = Memo(0, MemoTitle, MemoBody)
 
             val result_intent = Intent()
             result_intent.putExtra("memo",memo)

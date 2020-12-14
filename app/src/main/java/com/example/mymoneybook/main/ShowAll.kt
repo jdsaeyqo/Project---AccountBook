@@ -1,4 +1,4 @@
-package com.example.mymoneybook
+package com.example.mymoneybook.main
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
@@ -9,6 +9,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymoneybook.R
+import com.example.mymoneybook.data.AddData
+import com.example.mymoneybook.data.Data
+import com.example.mymoneybook.data.DataAdapter
+import com.example.mymoneybook.data.MoneyDatabase
 import kotlinx.android.synthetic.main.frag_all.*
 import java.text.DecimalFormat
 
@@ -75,16 +80,26 @@ class ShowAll : Fragment() {
             }
 
 
-            adapter = DataAdapter(db!!, data_list, activity!!) { Data ->
+            adapter = DataAdapter(
+                db!!,
+                data_list,
+                activity!!
+            ) { Data ->
 
-                val popupMenu = PopupMenu(activity,recycle_all,Gravity.NO_GRAVITY,R.attr.actionOverflowMenuStyle,0)
+                val popupMenu = PopupMenu(
+                    activity,
+                    recycle_all,
+                    Gravity.NO_GRAVITY,
+                    R.attr.actionOverflowMenuStyle,
+                    0
+                )
                 val menuInflater = MenuInflater(activity)
-                menuInflater.inflate(R.menu.menu,popupMenu.menu)
+                menuInflater.inflate(R.menu.menu, popupMenu.menu)
 
 //
 
                 popupMenu.setOnMenuItemClickListener {
-                    when(it.itemId){
+                    when (it.itemId) {
                         R.id.menu_delete -> {
                             val v = Runnable {
 
@@ -92,14 +107,14 @@ class ShowAll : Fragment() {
                                 data_list.remove(Data)
                                 activity!!.runOnUiThread {
                                     adapter.notifyDataSetChanged()
-                                    income=0
-                                    outcome=0
-                                    result=0
-                                    for (x in 0..(data_list.size-1)) {
+                                    income = 0
+                                    outcome = 0
+                                    result = 0
+                                    for (x in 0..(data_list.size - 1)) {
                                         if (data_list[x].checked == "수입") {
                                             income += Integer.parseInt(data_list[x].money.toString())
                                         } else {
-                                            if(data_list[x].money.toString() != "") {
+                                            if (data_list[x].money.toString() != "") {
                                                 outcome += Integer.parseInt(data_list[x].money.toString())
                                             }
 
@@ -124,9 +139,9 @@ class ShowAll : Fragment() {
                                 activity!!.runOnUiThread {
                                     adapter.notifyDataSetChanged()
                                     //초기화
-                                    income=0
-                                    outcome=0
-                                    result=0
+                                    income = 0
+                                    outcome = 0
+                                    result = 0
                                     textIncome.text = decimal.format(income).toString()
                                     textOutcome.text = decimal.format(outcome).toString()
                                     textResult.text = decimal.format(result).toString()
