@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        //네이버 아이디
+        //네이버 아이디 로그인
         val naver_client_id = "O1mW7xHOd2X95n7IbJ_C"
         val naver_client_secret = "8x5P5P_mHB"
         val naver_client_name = "네아로 테스트"
