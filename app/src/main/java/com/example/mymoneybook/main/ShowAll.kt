@@ -78,8 +78,6 @@ class ShowAll : Fragment() {
                 textOutcome.text = decimal.format(outcome).toString()
                 textResult.text = decimal.format(result).toString()
             }
-
-
             adapter = DataAdapter(
                 db!!,
                 data_list,
@@ -184,7 +182,6 @@ class ShowAll : Fragment() {
 
         if (requestCode == ADDdataActivity) {
             if (resultCode == Activity.RESULT_OK) {
-
 
                 val data1 = data?.getParcelableExtra<Data>("data")
 

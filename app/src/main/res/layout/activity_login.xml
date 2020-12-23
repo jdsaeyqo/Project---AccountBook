@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
 
     <TextView
         android:id="@+id/text_logo"
@@ -25,7 +24,7 @@
 
     <EditText
         android:id="@+id/edit_login"
-        android:layout_width="0dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="이메일 입력"
         android:inputType="textEmailAddress"
@@ -39,7 +38,7 @@
 
     <EditText
         android:id="@+id/edit_pass"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="비밀번호 입력"
         android:inputType="textPassword"
@@ -54,34 +53,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입"
+        android:textColor="@color/colorAccent"
         android:layout_marginRight="10dp"
+        android:background="@drawable/btn_icon"
         app:layout_constraintBottom_toBottomOf="@+id/btn_signin"
         app:layout_constraintRight_toLeftOf="@+id/btn_signin"
         app:layout_constraintTop_toTopOf="@+id/btn_signin" />
 
     <Button
+
         android:id="@+id/btn_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="로그인"
-        android:layout_marginBottom="10dp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/btn_icon"
         app:layout_constraintBottom_toTopOf="@+id/button_googlesignin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
-
-         />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
 
     <com.google.android.gms.common.SignInButton
+
         android:id="@+id/button_googlesignin"
-        android:layout_width="0dp"
+        android:layout_width="230dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6">
+        app:layout_constraintVertical_bias="0.599">
 
     </com.google.android.gms.common.SignInButton>
 

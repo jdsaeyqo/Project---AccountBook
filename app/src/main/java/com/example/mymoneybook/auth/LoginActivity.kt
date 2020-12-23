@@ -40,6 +40,17 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        btn_signin.setOnClickListener {
+            loginEmail()
+        }
+        btn_signup.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
+
+        //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
+        button_googlesignin.setOnClickListener { signIn() }
+
         //네이버 아이디 로그인
         val naver_client_id = "O1mW7xHOd2X95n7IbJ_C"
         val naver_client_secret = "8x5P5P_mHB"
@@ -72,11 +83,6 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
-
-        //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
-        button_googlesignin.setOnClickListener { signIn() }
-
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.
         DEFAULT_SIGN_IN)
@@ -91,13 +97,7 @@ class LoginActivity : AppCompatActivity() {
         //firebase auth 객체
         firebaseAuth = FirebaseAuth.getInstance()
 
-        btn_signin.setOnClickListener {
-            loginEmail()
-        }
-        btn_signup.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
-        }
+
 
     }
 //    // onStart. 유저가 앱에 이미 구글 로그인을 했는지 확인

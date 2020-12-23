@@ -14,7 +14,6 @@ class MainActivity :FragmentActivity() {
     // ViewPager2에 세팅하기 위한 Fragment들을 가지고 있는 ArrayList
     private val fragmemtList = ArrayList<Fragment>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
