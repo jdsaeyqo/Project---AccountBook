@@ -8,6 +8,7 @@ import android.view.*
 import android.widget.PopupMenu
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoneybook.R
@@ -43,6 +44,7 @@ class MemoFragment : Fragment() {
 
 
         db = MemoDatabase.getInstance(activity!!)
+
 
         val r = Runnable {
             val savedContacts = db!!.memoDao().getAll()
@@ -101,8 +103,8 @@ class MemoFragment : Fragment() {
                 recyclerview.adapter = adapter
             }
 
-        }
-        Thread(r).start()
+       }
+       Thread(r).start()
 
         return view
     }

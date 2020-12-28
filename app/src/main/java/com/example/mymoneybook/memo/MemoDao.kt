@@ -1,5 +1,6 @@
 package com.example.mymoneybook.memo
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.mymoneybook.memo.Memo
 
