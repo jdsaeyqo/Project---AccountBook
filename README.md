@@ -27,9 +27,10 @@
 :------:|:-------:
 ![image4](https://github.com/jdsaeyqo/Project---AccountBook/blob/master/app/src/main/res/drawable/_cashbook_image4.jpg)|![image5](https://github.com/jdsaeyqo/Project---AccountBook/blob/master/app/src/main/res/drawable/__cashbook_image5.jpg)  
 
-- @Parcelize사용하여 수입/지출, 메모 프래그먼트에 값 전달
+- @Parcelize사용하여 수입/지출, 메모 프래그먼트에 값 전달  
 
-#Library
+---
+# Library
 ~~~kotlin  
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt
