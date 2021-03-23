@@ -13,12 +13,12 @@ import java.text.DecimalFormat
 
 class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val context: Context
                   , val itemClick: (Data)-> Unit)
-    : RecyclerView.Adapter<DataAdapter.mViewHolder>(){
+    : RecyclerView.Adapter<DataAdapter.MViewHolder>(){
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): mViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.data_item, parent, false)
-        val holder = mViewHolder(view, itemClick)
+        val holder = MViewHolder(view, itemClick)
 
 
         return holder
@@ -29,7 +29,7 @@ class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val cont
         return data.size
     }
 
-    override fun onBindViewHolder(holder: mViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MViewHolder, position: Int) {
 
         val decimal = DecimalFormat("###,###")
         val viewholder = holder.itemView
@@ -38,6 +38,7 @@ class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val cont
         viewholder.txt_date.text = data[position].date
         viewholder.txt_sep.text = data[position].sep
         viewholder.txt_checked.text = data[position].checked
+
         if(data[position].money != ""){
             viewholder.txt_money.text = decimal.format(Integer.parseInt(data[position].money!!)).toString()
         }
@@ -55,7 +56,7 @@ class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val cont
     }
 
 
-    inner class mViewHolder(itemView: View, itemClick: (Data) -> Unit) :
+    inner class MViewHolder(itemView: View, itemClick: (Data) -> Unit) :
         RecyclerView.ViewHolder(itemView){
 
 

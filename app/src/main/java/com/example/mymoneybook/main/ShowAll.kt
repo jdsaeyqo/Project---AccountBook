@@ -1,4 +1,5 @@
 package com.example.mymoneybook.main
+
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
@@ -59,25 +60,15 @@ class ShowAll : Fragment() {
                 data_list.addAll(savedContacts)
 
             }
-            for (x in 0..(data_list.size-1)) {
-                if (data_list[x].checked == "수입") {
-                    income += Integer.parseInt(data_list[x].money.toString())
 
-                } else {
-                    if(data_list[x].money.toString() != "") {
-                        outcome += Integer.parseInt(data_list[x].money.toString())
+            refreshMoney()
 
-                    }
-
-                }
-            }
             result = income - outcome
 
             activity!!.runOnUiThread {
-                textIncome.text = decimal.format(income).toString()
-                textOutcome.text = decimal.format(outcome).toString()
-                textResult.text = decimal.format(result).toString()
+                toDecimal()
             }
+
             adapter = DataAdapter(
                 db!!,
                 data_list,
@@ -105,23 +96,13 @@ class ShowAll : Fragment() {
                                 data_list.remove(Data)
                                 activity!!.runOnUiThread {
                                     adapter.notifyDataSetChanged()
-                                    income = 0
-                                    outcome = 0
-                                    result = 0
-                                    for (x in 0..(data_list.size - 1)) {
-                                        if (data_list[x].checked == "수입") {
-                                            income += Integer.parseInt(data_list[x].money.toString())
-                                        } else {
-                                            if (data_list[x].money.toString() != "") {
-                                                outcome += Integer.parseInt(data_list[x].money.toString())
-                                            }
 
-                                        }
-                                    }
+                                    initMoney()
+                                    refreshMoney()
+
+
                                     result = income - outcome
-                                    textIncome.text = decimal.format(income).toString()
-                                    textOutcome.text = decimal.format(outcome).toString()
-                                    textResult.text = decimal.format(result).toString()
+                                    toDecimal()
 
 
                                 }
@@ -137,12 +118,8 @@ class ShowAll : Fragment() {
                                 activity!!.runOnUiThread {
                                     adapter.notifyDataSetChanged()
                                     //초기화
-                                    income = 0
-                                    outcome = 0
-                                    result = 0
-                                    textIncome.text = decimal.format(income).toString()
-                                    textOutcome.text = decimal.format(outcome).toString()
-                                    textResult.text = decimal.format(result).toString()
+                                    initMoney()
+
                                 }
                             }
                             Thread(r).start()
@@ -165,13 +142,12 @@ class ShowAll : Fragment() {
         return view
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         btn_add.setOnClickListener {
             val intent = Intent(activity, AddData::class.java)
-////            startActivity(intent)
             startActivityForResult(intent, ADDdataActivity)
         }
 
@@ -183,37 +159,69 @@ class ShowAll : Fragment() {
         if (requestCode == ADDdataActivity) {
             if (resultCode == Activity.RESULT_OK) {
 
-                val data1 = data?.getParcelableExtra<Data>("data")
+                val info = data?.getParcelableExtra<Data>("data")
 
-                val Newdata = Data()
-                Newdata.date = data1?.date
-                Newdata.sep = data1?.sep
-                Newdata.money = data1?.money
-                Newdata.purp = data1?.purp
-                Newdata.checked = data1?.checked
+                val newData = Data(
+                    id = 1,
+                    date = info?.date,
+                    sep = info?.sep,
+                    money = info?.money,
+                    purp = info?.purp,
+                    checked = info?.checked
+                )
 
-                Thread(Runnable { db!!.dataDao().insert(Newdata) }).start()
 
-                data_list.add(Newdata)
+
+
+
+                Thread { db!!.dataDao().insert(newData) }.start()
+
+                data_list.add(newData)
 
                 recyclerview.adapter?.notifyDataSetChanged()
-                if(Newdata.checked=="수입") {
-                    income += Integer.parseInt(Newdata.money)
-                }else {
-                    if (Newdata.money != "") {
-                        outcome += Integer.parseInt(Newdata.money)
+                if (newData.checked == "수입") {
+                    income += Integer.parseInt(newData.money)
+                } else {
+                    if (newData.money != "") {
+                        outcome += Integer.parseInt(newData.money)
                     }
                 }
-                result=income-outcome
-                textIncome.text = decimal.format(income).toString()
-                textOutcome.text = decimal.format(outcome).toString()
-                textResult.text = decimal.format(result).toString()
+                result = income - outcome
+
+                toDecimal()
 
             }
 
 
         }
 
+    }
+
+    private fun toDecimal() {
+
+        textIncome.text = decimal.format(income).toString()
+        textOutcome.text = decimal.format(outcome).toString()
+        textResult.text = decimal.format(result).toString()
+    }
+
+    private fun refreshMoney() {
+
+        for (x in 0..(data_list.size - 1)) {
+            if (data_list[x].checked == "수입") {
+                income += Integer.parseInt(data_list[x].money.toString())
+            } else {
+                if (data_list[x].money.toString() != "") {
+                    outcome += Integer.parseInt(data_list[x].money.toString())
+                }
+
+            }
+        }
+    }
+
+    private fun initMoney() {
+        income = 0
+        outcome = 0
+        result = 0
     }
 
 }

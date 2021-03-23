@@ -1,59 +1,37 @@
 package com.example.mymoneybook.data
 
-import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "moneybookTable")
-class Data() :Parcelable {
+
+data class Data(
 
     @PrimaryKey(autoGenerate = true)
-    var id : Long? = null
+    var id: Long?,
 
-    @ColumnInfo(name="date")
-    var date : String? = null
-    @ColumnInfo(name="sep")
-    var sep : String? = null
-    @ColumnInfo(name="money")
-    var money : String? = null
-    @ColumnInfo(name="purp")
-    var purp : String? = null
-    @ColumnInfo(name="checked")
-    var checked : String? = null
+    @ColumnInfo(name = "title")
+    var date: String?,
 
-    constructor(parcel: Parcel) : this(){
+    @ColumnInfo(name = "sep")
+    var sep: String?,
 
-        date = parcel.readString()
-        sep = parcel.readString()
-        money = parcel.readString()
-        purp = parcel.readString()
-        checked = parcel.readString()
+    @ColumnInfo(name = "money")
+    var money: String?,
 
-    }
+    @ColumnInfo(name = "purp")
+    var purp: String?,
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(date)
-        parcel.writeString(sep)
-        parcel.writeString(money)
-        parcel.writeString(purp)
-        parcel.writeString(checked)
-    }
+    @ColumnInfo(name = "checked")
+    var checked: String?
 
-    override fun describeContents(): Int {
-        return 0
-    }
+) : Parcelable
 
-    companion object CREATOR : Parcelable.Creator<Data> {
-        override fun createFromParcel(parcel: Parcel): Data {
-            return Data(parcel)
-        }
 
-        override fun newArray(size: Int): Array<Data?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+
 
 

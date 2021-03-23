@@ -14,6 +14,7 @@ class AddMemo : AppCompatActivity() {
 
 
         btn_memosave.setOnClickListener {
+
             val MemoTitle = memo_title.text.toString()
             val MemoBody = memo_body.text.toString()
 

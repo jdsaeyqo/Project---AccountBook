@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Dao
 interface DataDao {
-    @Query("SELECT * from moneybookTable ORDER BY date DESC")
+    @Query("SELECT * from moneybookTable ")
     fun getAll():List<Data>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -26,12 +26,12 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun createEmail(){
-        firebaseauth!!.createUserWithEmailAndPassword(edit_email.text.toString(),edit_pass.text.toString())
+        firebaseauth.createUserWithEmailAndPassword(edit_email.text.toString(),edit_pass.text.toString())
             .addOnCompleteListener(this){
                 if(it.isSuccessful){
-                    val user = firebaseauth?.currentUser
+                    val user = firebaseauth.currentUser
                     Toast.makeText(this,"회원가입 성공", Toast.LENGTH_SHORT).show()
-                    var intent  = Intent(this,
+                    val intent  = Intent(this,
                         LoginActivity::class.java)
                     startActivity(intent)
                     finishAffinity()

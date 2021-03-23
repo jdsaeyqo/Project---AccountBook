@@ -8,7 +8,6 @@ import android.view.*
 import android.widget.PopupMenu
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoneybook.R
@@ -132,7 +131,7 @@ class MemoFragment : Fragment() {
                     memo!!.body
                 )
 
-                Thread(Runnable { db!!.memoDao().insert(NewMemo) }).start()
+                Thread{ db!!.memoDao().insert(NewMemo) }.start()
 
                 memo_list.add(NewMemo)
                 recyclerview.adapter?.notifyDataSetChanged()

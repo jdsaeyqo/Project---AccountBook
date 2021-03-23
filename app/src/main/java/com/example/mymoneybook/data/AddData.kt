@@ -19,39 +19,31 @@ class AddData : AppCompatActivity() {
 
         val calender: CalendarView = calendar.findViewById(R.id.calendar)
         calender.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            var year = year
-            var month = month
-            var day = dayOfMonth
 
             text_date.text = String.format("%d / %d / %d", year, month + 1, dayOfMonth)
 
-
             btn_save.setOnClickListener {
 
-                val checked: String
-                if (radio_income.isChecked){
-                     checked = "수입"
+                var checked: String = if (radio_income.isChecked){
+                    "수입"
                 }else{
-                    checked = "지출"
+                    "지출"
                 }
 
-                val finaldate = text_date.text.toString()
-                val finalsep = edit_sep.text.toString()
-                val finalmoney = edit_money.text.toString()
-                val finalpurp = edit_purp.text.toString()
-
-                val data = Data()
-                data.date = finaldate
-                data.sep = finalsep
-                data.money = finalmoney
-                data.purp = finalpurp
-                data.checked = checked
+                val data = Data(
+                    id = 0,
+                    date = text_date.text.toString(),
+                    sep = edit_sep.text.toString(),
+                    money = edit_money.text.toString(),
+                    purp = edit_purp.text.toString(),
+                    checked = checked
+                )
 
 
-                val result_intent = Intent()
-                result_intent.putExtra("data",data)
+                val resultIntent = Intent()
+                resultIntent.putExtra("data",data)
 
-                setResult(Activity.RESULT_OK,result_intent)
+                setResult(Activity.RESULT_OK,resultIntent)
                 finish()
 
             }
