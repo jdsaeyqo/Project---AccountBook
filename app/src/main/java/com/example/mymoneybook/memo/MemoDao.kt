@@ -2,12 +2,12 @@ package com.example.mymoneybook.memo
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.mymoneybook.memo.Memo
+
 
 @Dao
 interface MemoDao {
     @Query("SELECT * from MemoTable")
-    fun getAll():List<Memo>
+    fun getAll():LiveData<List<Memo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(memo: Memo)

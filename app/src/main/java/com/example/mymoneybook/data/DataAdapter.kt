@@ -1,6 +1,5 @@
 package com.example.mymoneybook.data
 
-import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +10,13 @@ import kotlinx.android.synthetic.main.data_item.view.*
 import java.text.DecimalFormat
 
 
-class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val context: Context
-                  , val itemClick: (Data)-> Unit)
-    : RecyclerView.Adapter<DataAdapter.MViewHolder>(){
+class DataAdapter(val itemClick: (Data)-> Unit) : RecyclerView.Adapter<DataAdapter.MViewHolder>(){
+
+    private var dataList : List<Data> = listOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.data_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.data_item, parent, false)
         val holder = MViewHolder(view, itemClick)
 
 
@@ -26,7 +25,7 @@ class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val cont
 
 
     override fun getItemCount(): Int {
-        return data.size
+        return dataList.size
     }
 
     override fun onBindViewHolder(holder: MViewHolder, position: Int) {
@@ -35,12 +34,12 @@ class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val cont
         val viewholder = holder.itemView
 
 
-        viewholder.txt_date.text = data[position].date
-        viewholder.txt_sep.text = data[position].sep
-        viewholder.txt_checked.text = data[position].checked
+        viewholder.txt_date.text = dataList[position].date
+        viewholder.txt_sep.text = dataList[position].sep
+        viewholder.txt_checked.text = dataList[position].checked
 
-        if(data[position].money != ""){
-            viewholder.txt_money.text = decimal.format(Integer.parseInt(data[position].money!!)).toString()
+        if(dataList[position].money != ""){
+            viewholder.txt_money.text = decimal.format(Integer.parseInt(dataList[position].money!!)).toString()
         }
         if (viewholder.txt_checked.text == "수입") {
             viewholder.txt_money.setTextColor(Color.BLUE)
@@ -48,25 +47,28 @@ class DataAdapter(val db : MoneyDatabase, val data : MutableList<Data>, val cont
             viewholder.txt_money.setTextColor(Color.RED)
         }
 
-        viewholder.txt_purp.text = data[position].purp
+        viewholder.txt_purp.text = dataList[position].purp
 
-        holder.bind(data[position], context)
-
+        holder.bind(dataList[position])
 
     }
-
 
     inner class MViewHolder(itemView: View, itemClick: (Data) -> Unit) :
         RecyclerView.ViewHolder(itemView){
 
 
-        fun bind(item: Data, context: Context) {
+        fun bind(item: Data) {
             itemView.setOnClickListener { itemClick(item) }
 
 
         }
 
 
+    }
+
+    fun setData(dataList : List<Data>){
+        this.dataList = dataList
+        notifyDataSetChanged()
     }
 
 

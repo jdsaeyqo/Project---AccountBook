@@ -1,14 +1,16 @@
 package com.example.mymoneybook.data
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CalendarView
+import androidx.activity.viewModels
 import com.example.mymoneybook.R
 import kotlinx.android.synthetic.main.activity_add_data.*
 
 class AddData : AppCompatActivity() {
+
+    private val dataViewModel: MainViewModel by viewModels()
+    private var id:Long? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -24,14 +26,14 @@ class AddData : AppCompatActivity() {
 
             btn_save.setOnClickListener {
 
-                var checked: String = if (radio_income.isChecked){
+                val checked: String = if (radio_income.isChecked){
                     "수입"
                 }else{
                     "지출"
                 }
 
                 val data = Data(
-                    id = 0,
+                    id = id,
                     date = text_date.text.toString(),
                     sep = edit_sep.text.toString(),
                     money = edit_money.text.toString(),
@@ -39,12 +41,9 @@ class AddData : AppCompatActivity() {
                     checked = checked
                 )
 
-
-                val resultIntent = Intent()
-                resultIntent.putExtra("data",data)
-
-                setResult(Activity.RESULT_OK,resultIntent)
+                dataViewModel.insert(data)
                 finish()
+
 
             }
 

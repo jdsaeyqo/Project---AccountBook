@@ -1,8 +1,6 @@
 package com.example.mymoneybook.auth
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,7 +23,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     lateinit var mOAuthLoginInstance : OAuthLogin
-
 
     //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth

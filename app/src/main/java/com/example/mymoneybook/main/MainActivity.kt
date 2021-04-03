@@ -40,9 +40,7 @@ class MainActivity :FragmentActivity() {
         pager2.adapter = adapter1
 
 
-        TabLayoutMediator(tabs, pager2) { tab, position ->
-
-       }.attach()
+        TabLayoutMediator(tabs, pager2) { _,_ -> }.attach()
 
         tabs.getTabAt(0)?.setIcon(R.drawable.baseline1_money_black_18dp)
         tabs.getTabAt(1)?.setIcon(R.drawable.baseline1_notes_black_18dp)
