@@ -17,7 +17,7 @@ class DataAdapter(val itemClick: (Data)-> Unit) : RecyclerView.Adapter<DataAdapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.data_item, parent, false)
-        val holder = MViewHolder(view, itemClick)
+        val holder = MViewHolder(view)
 
 
         return holder
@@ -53,7 +53,7 @@ class DataAdapter(val itemClick: (Data)-> Unit) : RecyclerView.Adapter<DataAdapt
 
     }
 
-    inner class MViewHolder(itemView: View, itemClick: (Data) -> Unit) :
+    inner class MViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView){
 
 
