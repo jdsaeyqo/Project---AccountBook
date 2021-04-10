@@ -52,5 +52,10 @@ apply plugin: 'kotlin-kapt
     implementation "android.arch.persistence.room:runtime:2.2.5"
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     androidTestImplementation "androidx.room:room-testing:2.2.6"
+
+//LiveData,ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.activity:activity-ktx:1.2.2"
+    implementation "androidx.fragment:fragment-ktx:1.3.2"
 ~~~
 
