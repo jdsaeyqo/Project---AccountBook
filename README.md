@@ -27,7 +27,7 @@
 :------:|:-------:
 ![image4](https://github.com/jdsaeyqo/Project---AccountBook/blob/master/app/src/main/res/drawable/_cashbook_image4.jpg)|![image5](https://github.com/jdsaeyqo/Project---AccountBook/blob/master/app/src/main/res/drawable/__cashbook_image5.jpg)  
 
-- @Parcelize사용하여 수입/지출, 메모 프래그먼트에 값 전달  
+- LiveData로 관찰하여 데이터 값 수정 시  메인 프래그먼트에 데이터 반영
 
 ---
 # Library
@@ -52,5 +52,10 @@ apply plugin: 'kotlin-kapt
     implementation "android.arch.persistence.room:runtime:2.2.5"
     kapt 'android.arch.persistence.room:compiler:1.1.1'
     androidTestImplementation "androidx.room:room-testing:2.2.6"
+
+//LiveData,ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.activity:activity-ktx:1.2.2"
+    implementation "androidx.fragment:fragment-ktx:1.3.2"
 ~~~
 
