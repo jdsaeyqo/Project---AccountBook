@@ -1,6 +1,8 @@
 package com.example.mymoneybook.main
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -26,7 +28,7 @@ class MainActivity :FragmentActivity() {
         fragmemtList.add(fragAll)
         fragmemtList.add(fragMemo)
 
-
+        val tabIcon  = arrayOf(R.drawable.baseline1_money_black_18dp,R.drawable.baseline1_notes_black_18dp)
 
         val adapter1 = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int {
@@ -39,11 +41,12 @@ class MainActivity :FragmentActivity() {
         }
         pager2.adapter = adapter1
 
+        TabLayoutMediator(tabs, pager2) {tab,i ->
+            tab.setIcon(tabIcon[i])
 
-        TabLayoutMediator(tabs, pager2) { _,_ -> }.attach()
 
-        tabs.getTabAt(0)?.setIcon(R.drawable.baseline1_money_black_18dp)
-        tabs.getTabAt(1)?.setIcon(R.drawable.baseline1_notes_black_18dp)
+        }.attach()
+
 
     }
 
