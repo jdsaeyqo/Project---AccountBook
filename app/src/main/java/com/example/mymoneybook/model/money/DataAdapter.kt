@@ -1,4 +1,4 @@
-package com.example.mymoneybook.model
+package com.example.mymoneybook.model.money
 
 import android.graphics.Color
 import android.view.LayoutInflater

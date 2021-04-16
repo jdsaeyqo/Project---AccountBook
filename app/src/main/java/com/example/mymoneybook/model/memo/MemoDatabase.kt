@@ -1,4 +1,4 @@
-package com.example.mymoneybook.model
+package com.example.mymoneybook.model.memo
 
 import android.content.Context
 import androidx.room.Database

@@ -3,8 +3,8 @@ package com.example.mymoneybook.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.mymoneybook.model.Memo
-import com.example.mymoneybook.model.MemoRepository
+import com.example.mymoneybook.model.memo.Memo
+import com.example.mymoneybook.model.memo.MemoRepository
 
 class MemoViewModel(application: Application): AndroidViewModel(application){
 

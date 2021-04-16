@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoneybook.viewmodel.MainViewModel
 import com.example.mymoneybook.R
-import com.example.mymoneybook.model.Data
-import com.example.mymoneybook.model.DataAdapter
+import com.example.mymoneybook.model.money.Data
+import com.example.mymoneybook.model.money.DataAdapter
 import kotlinx.android.synthetic.main.frag_all.*
 import java.text.DecimalFormat
 

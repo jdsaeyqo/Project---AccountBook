@@ -36,6 +36,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //firebase auth 객체
+        firebaseAuth = FirebaseAuth.getInstance()
+
         btn_signin.setOnClickListener {
             loginEmail()
         }
@@ -44,10 +47,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
-        button_googlesignin.setOnClickListener { signIn() }
+        button_googlesignin.setOnClickListener { googleSignIn() }
 
-        //네이버 아이디 로그인
+        naverLogin()
+
+
+    }
+
+    private fun naverLogin() {
         val naver_client_id = "O1mW7xHOd2X95n7IbJ_C"
         val naver_client_secret = "8x5P5P_mHB"
         val naver_client_name = "네아로 테스트"
@@ -75,34 +82,7 @@ class LoginActivity : AppCompatActivity() {
         mOAuthLoginInstance  = OAuthLogin.getInstance()
         mOAuthLoginInstance.init(this,naver_client_id,naver_client_secret,naver_client_name)
         button_naverlogin.setOAuthLoginHandler(handler)
-
-
-
-
-        //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            //'R.string.default_web_client_id' 에는 본인의 클라이언트 아이디를 넣어주시면 됩니다.
-            //저는 스트링을 따로 빼서 저렇게 사용했지만 스트링을 통째로 넣으셔도 됩니다.
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        //firebase auth 객체
-        firebaseAuth = FirebaseAuth.getInstance()
-
-
-
     }
-//    // onStart. 유저가 앱에 이미 구글 로그인을 했는지 확인
-//    public override fun onStart() {
-//        super.onStart()
-//        val account = GoogleSignIn.getLastSignedInAccount(this)
-//        if (account !== null) { // 이미 로그인 되어있을시 바로 메인 액티비티로 이동
-//            toMainActivity(firebaseAuth.currentUser)
-//        }
-//    } //onStart End
 
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -143,7 +123,7 @@ class LoginActivity : AppCompatActivity() {
 
     //이메일 로그인
     private fun loginEmail() {
-        firebaseAuth!!.signInWithEmailAndPassword(
+        firebaseAuth.signInWithEmailAndPassword(
             edit_login.text.toString(),
             edit_pass.text.toString()
         )
@@ -170,7 +150,14 @@ class LoginActivity : AppCompatActivity() {
         } // toMainActivity End
 
         // signIn
-        private fun signIn() {
+        private fun googleSignIn() {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+
+            googleSignInClient = GoogleSignIn.getClient(this, gso)
+
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }

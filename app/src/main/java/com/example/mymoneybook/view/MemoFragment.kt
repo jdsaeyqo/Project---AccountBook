@@ -12,8 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoneybook.R
-import com.example.mymoneybook.model.Memo
-import com.example.mymoneybook.model.MemoAdapter
+import com.example.mymoneybook.model.memo.Memo
+import com.example.mymoneybook.model.memo.MemoAdapter
 import com.example.mymoneybook.viewmodel.MemoViewModel
 import kotlinx.android.synthetic.main.frag_memo.*
 
