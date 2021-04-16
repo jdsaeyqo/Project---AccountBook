@@ -1,13 +1,10 @@
-package com.example.mymoneybook.main
+package com.example.mymoneybook.view
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.mymoneybook.R
-import com.example.mymoneybook.memo.MemoFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 

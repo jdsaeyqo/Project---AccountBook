@@ -1,4 +1,4 @@
-package com.example.mymoneybook.main
+package com.example.mymoneybook.view
 
 
 import android.content.Intent
@@ -12,11 +12,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mymoneybook.data.MainViewModel
+import com.example.mymoneybook.viewmodel.MainViewModel
 import com.example.mymoneybook.R
-import com.example.mymoneybook.data.AddData
-import com.example.mymoneybook.data.Data
-import com.example.mymoneybook.data.DataAdapter
+import com.example.mymoneybook.model.Data
+import com.example.mymoneybook.model.DataAdapter
 import kotlinx.android.synthetic.main.frag_all.*
 import java.text.DecimalFormat
 

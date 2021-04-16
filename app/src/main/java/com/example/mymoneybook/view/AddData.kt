@@ -1,10 +1,12 @@
-package com.example.mymoneybook.data
+package com.example.mymoneybook.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CalendarView
 import androidx.activity.viewModels
 import com.example.mymoneybook.R
+import com.example.mymoneybook.model.Data
+import com.example.mymoneybook.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_add_data.*
 
 class AddData : AppCompatActivity() {
@@ -42,6 +44,7 @@ class AddData : AppCompatActivity() {
                 )
 
                 dataViewModel.insert(data)
+
                 finish()
 
 

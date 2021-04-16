@@ -1,10 +1,9 @@
-package com.example.mymoneybook.main
+package com.example.mymoneybook.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
-import com.example.mymoneybook.auth.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

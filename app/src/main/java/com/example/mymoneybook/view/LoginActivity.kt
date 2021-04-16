@@ -1,4 +1,4 @@
-package com.example.mymoneybook.auth
+package com.example.mymoneybook.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.mymoneybook.main.MainActivity
 import com.example.mymoneybook.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -58,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
         object :OAuthLoginHandler(){
             override fun run(success: Boolean) {
                 if(success){
-                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                 }else{
                     val errorCode: String = mOAuthLoginInstance.getLastErrorCode(this@LoginActivity).code

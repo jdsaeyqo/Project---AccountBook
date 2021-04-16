@@ -1,4 +1,4 @@
-package com.example.mymoneybook.memo
+package com.example.mymoneybook.view
 
 import android.content.Intent
 import android.os.Build
@@ -12,7 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoneybook.R
-import kotlinx.android.synthetic.main.frag_all.*
+import com.example.mymoneybook.model.Memo
+import com.example.mymoneybook.model.MemoAdapter
+import com.example.mymoneybook.viewmodel.MemoViewModel
 import kotlinx.android.synthetic.main.frag_memo.*
 
 class MemoFragment : Fragment() {

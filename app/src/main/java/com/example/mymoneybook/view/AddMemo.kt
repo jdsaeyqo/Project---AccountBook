@@ -1,9 +1,11 @@
-package com.example.mymoneybook.memo
+package com.example.mymoneybook.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.mymoneybook.R
+import com.example.mymoneybook.model.Memo
+import com.example.mymoneybook.viewmodel.MemoViewModel
 import kotlinx.android.synthetic.main.activity_add_memo.*
 
 class AddMemo : AppCompatActivity() {
@@ -25,9 +27,6 @@ class AddMemo : AppCompatActivity() {
 
             memoViewModel.insert(memo)
             finish()
-
-
-
 
         }
 

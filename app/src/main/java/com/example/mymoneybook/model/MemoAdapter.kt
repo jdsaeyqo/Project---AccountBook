@@ -1,4 +1,4 @@
-package com.example.mymoneybook.memo
+package com.example.mymoneybook.model
 
 import android.view.LayoutInflater
 import android.view.View

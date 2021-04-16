@@ -1,4 +1,4 @@
-package com.example.mymoneybook.data
+package com.example.mymoneybook.model
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -14,7 +14,7 @@ class DataRepository(application: Application) {
         return datas
     }
 
-    fun insert(data:Data){
+    fun insert(data: Data){
         try {
             val thread = Thread(Runnable {
                 dataDao?.insert(data)

@@ -1,4 +1,4 @@
-package com.example.mymoneybook.auth
+package com.example.mymoneybook.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

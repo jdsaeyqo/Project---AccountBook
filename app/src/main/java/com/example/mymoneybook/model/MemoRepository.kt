@@ -1,4 +1,4 @@
-package com.example.mymoneybook.memo
+package com.example.mymoneybook.model
 
 import android.app.Application
 import androidx.lifecycle.LiveData
